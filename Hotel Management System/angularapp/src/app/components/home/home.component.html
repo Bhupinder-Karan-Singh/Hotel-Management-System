@@ -1,0 +1,63 @@
+<br><div class="container">
+  <h1>Room Reservation</h1>
+
+  <form #reservationForm="ngForm" (ngSubmit) = "onSubmit()" >
+
+    <mat-form-field appearance="fill" class="input-field">
+      <mat-label>Room Type</mat-label>
+      <mat-select [(value)]="selected" name="room_type" [(ngModel)]="room_type" required>
+        <mat-option value="Single">Single</mat-option>
+        <mat-option value="Double">Double</mat-option>
+        <mat-option value="Triple">Triple</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="input-field" appearance="fill">
+      <mat-label>From</mat-label>
+        <input matInput [matDatepicker]="picker" name="from_date" [(ngModel)]="from_date"  required>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field> <br/>
+
+    <mat-form-field class="input-field" appearance="fill">
+        <mat-label>To</mat-label>
+        <input matInput [matDatepicker]="picker2" name="to_date" [(ngModel)]="to_date" required>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field> <br/><br>
+
+    <mat-label>Breakfast</mat-label>&nbsp;&nbsp;
+      <mat-radio-group aria-label="Breakfast" name="breakfast" [(ngModel)]="breakfast" required>
+        <mat-radio-button value="Yes">Yes</mat-radio-button>&nbsp;
+        <mat-radio-button value="No">No</mat-radio-button><br>
+      </mat-radio-group> <br/>
+
+    <div class="div">
+    <mat-checkbox name="air_conditioner" value="yes" [(ngModel)]="air_conditioner"> Air Conditioner</mat-checkbox>&nbsp;&nbsp;
+    <mat-checkbox name="wakeup_service" value="yes" [(ngModel)]="wakeup_service">Wakeup Service</mat-checkbox>
+    </div><br>
+
+     <button class="button" mat-flat-button color="primary" type="submit" >Submit</button><br>
+
+    </form><br>
+</div><br><hr><br>
+  <mat-expansion-panel hideToggle *ngIf="userAdded" class="container2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div class="container3">
+        <p *ngIf ="userAdded">Registration Successful !!! Click for details</p>
+      </div>
+      </mat-panel-title>
+     </mat-expansion-panel-header>
+     <table>
+       <tr><td>Room Type : {{this.room_type}}</td></tr>
+       <tr><td>From Date : {{this.from_date}}</td></tr>
+       <tr><td>To date : {{this.to_date}}</td></tr>
+       <tr><td>Breakfast : {{this.breakfast}}</td></tr>
+       <tr><td>Air Conditioner : {{this.air_conditioner}}</td></tr>
+       <tr><td>Wakeup Service : {{this.wakeup_service}}</td></tr>
+    </table>
+  </mat-expansion-panel>
+

@@ -1,0 +1,80 @@
+<br>
+<div class="container2" *ngIf ="reservationlist.length <= 0">
+No record found.
+</div>
+
+<div class="container2" *ngIf ="reservationlist.length > 0">
+<form #reservationForm="ngForm">
+  <h1>Manage Reservations</h1>
+  <mat-form-field appearance="fill" class="input-field">
+    <mat-label>Room Type</mat-label>
+    <mat-select value="" name="room_type" [(ngModel)]="room_type" >
+      <mat-option value="Single">Single</mat-option>
+      <mat-option value="Double">Double</mat-option>
+      <mat-option value="Triple">Triple</mat-option>
+    </mat-select>
+  </mat-form-field><br>
+
+  <mat-form-field class="input-field" appearance="fill">
+    <mat-label>From</mat-label>
+      <input matInput [matDatepicker]="picker" name="from_date" [(ngModel)]="from_date" value="" >
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field> <br/>
+
+  <mat-form-field class="input-field" appearance="fill">
+      <mat-label>To</mat-label>
+      <input matInput [matDatepicker]="picker2" name="to_date" [(ngModel)]="to_date" value="">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field> <br/><br>
+
+  <mat-label>Breakfast</mat-label>&nbsp;&nbsp;
+    <mat-radio-group aria-label="Breakfast" name="breakfast" [(ngModel)]="breakfast" value="" >
+      <mat-radio-button value="Yes">Yes</mat-radio-button>&nbsp;
+      <mat-radio-button value="No">No</mat-radio-button><br>
+    </mat-radio-group> <br/>
+
+  <div class="div">
+  <mat-checkbox name="air_conditioner" value="yes" [(ngModel)]="air_conditioner"> Air Conditioner</mat-checkbox>&nbsp;&nbsp;
+  <mat-checkbox name="wakeup_service" value="yes" [(ngModel)]="wakeup_service">Wakeup Service</mat-checkbox>
+  </div><br>
+</form>
+</div><br>
+
+<hr><br>
+
+<div class="container" *ngIf ="reservationlist.length > 0"><br>
+<table *ngFor="let d of reservationlist" >
+  <tr>
+    <th>Room type</th>
+    <th>From date</th>
+    <th>To date</th>
+    <th>BreakFast</th>
+    <th>Air Conditioner</th>
+    <th>Wakeup Service</th>
+    <th>Edit</th>
+    <th>Save</th>
+    <th>Delete</th>
+  </tr>
+  <tr>
+
+    <td>{{d.room_type}}</td>
+
+    <td>{{d.from_date}}</td>
+
+    <td>{{d.to_date}}</td>
+
+    <td>{{d.breakfast}}</td>
+
+    <td>{{d.air_conditioner}}</td>
+
+    <td>{{d.wakeup_service}} </td>
+    <td><button class="button" mat-flat-button color="primary" (click)="edit(d._id)">Edit</button><br></td>
+    <td><button class="button" mat-flat-button color="primary" (click)="save(d._id)" >Save</button><br></td>
+    <td><button class="button" mat-flat-button color="primary" (click)="delete(d._id)" >Delete</button><br></td>
+  </tr><br>
+</table>
+</div>

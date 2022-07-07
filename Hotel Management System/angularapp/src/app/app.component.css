@@ -1,0 +1,57 @@
+.container {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container2 {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+h1{
+  text-align: center;
+}
+.input-field {
+  width: 100%;
+}
+.button{
+  width: 100%;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding : 0;
+  overflow: hidden;
+  background-color: #333;
+  text-align: center;
+}
+li {
+  float: left;
+  text-align: center;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  text-decoration: none;
+
+}
+li a:hover {
+  background-color: #111;
+}
+  /* Style the content */
+  .content {
+    background-color: #ddd;
+    padding: 10px;
+    height: 200px; /* Should be removed. Only for demonstration */
+  }
+p{
+  text-align: center;
+  color: green;
+}
+.expansion{
+  text-align: center;
+}
+
